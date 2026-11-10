@@ -1,0 +1,334 @@
+/* ==========================================================================
+   1. VARIABLES DE DISEÑO & CONFIGURACIÓN GLOBAL
+   ========================================================================== */
+:root {
+  /* Paleta de colores: Azul oscuro, blanco y tonos turquesa */
+  --bg-gradient-start: #0a192f;
+  --bg-gradient-end: #112240;
+  --card-bg: #172a45;
+  --text-primary: #ffffff;
+  --text-secondary: #8892b0;
+  --primary-turquoise: #64ffda;
+  --primary-turquoise-hover: #4cd6b4;
+  --error-color: #ff5370;
+  --error-bg: rgba(255, 83, 112, 0.1);
+  --success-color: #00e676;
+  --success-bg: rgba(0, 230, 118, 0.1);
+  --input-bg: #0a192f;
+  --border-color: #233554;
+  
+  /* Fuentes & Sombras */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --box-shadow: 0 20px 40px rgba(2, 12, 27, 0.7);
+  --border-radius-card: 16px;
+  --border-radius-input: 8px;
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Restablecimiento básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+/* ==========================================================================
+   2. ESTRUCTURA DE LA TARJETA (CARD UI/UX)
+   ========================================================================== */
+.login-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+.login-card {
+  background-color: var(--card-bg);
+  padding: 2.5rem 2rem;
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-header {
+  text-align: center;
+}
+
+.logo-icon {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(100, 255, 218, 0.1);
+  color: var(--primary-turquoise);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+}
+
+.login-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   3. ESTILOS DE FORMULARIO E INPUTS
+   ========================================================================== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-input);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.input-wrapper input:focus {
+  border-color: var(--primary-turquoise);
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.15);
+}
+
+.input-wrapper input:focus + .input-icon,
+.input-wrapper input:focus ~ .input-icon {
+  color: var(--primary-turquoise);
+}
+
+/* Botón para alternar clave */
+.btn-toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  border-radius: 4px;
+}
+
+.btn-toggle-password:hover,
+.btn-toggle-password:focus {
+  color: var(--primary-turquoise);
+  outline: none;
+}
+
+/* Estado de error en inputs */
+.form-group.has-error input {
+  border-color: var(--error-color);
+}
+
+.error-message {
+  font-size: 0.8rem;
+  color: var(--error-color);
+  min-height: 1.1rem;
+}
+
+/* ==========================================================================
+   4. CHECKBOX Y ENLACES ACCESIBLES
+   ========================================================================== */
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text-secondary);
+}
+
+.checkbox-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.checkbox-container input:checked ~ .custom-checkbox {
+  background-color: var(--primary-turquoise);
+  border-color: var(--primary-turquoise);
+}
+
+.checkbox-container input:checked ~ .custom-checkbox::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--bg-gradient-start);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:focus ~ .custom-checkbox {
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+}
+
+.forgot-password-link {
+  color: var(--primary-turquoise);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+  color: var(--primary-turquoise-hover);
+}
+
+/* ==========================================================================
+   5. BOTÓN PRINCIPAL DE ENVÍO
+   ========================================================================== */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--primary-turquoise);
+  color: var(--bg-gradient-start);
+  border: none;
+  border-radius: var(--border-radius-input);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-turquoise-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(100, 255, 218, 0.2);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.4);
+}
+
+/* ==========================================================================
+   6. MENSAJES GLOBALES Y ADVERTENCIAS
+   ========================================================================== */
+.global-message {
+  padding: 0.85rem;
+  border-radius: var(--border-radius-input);
+  font-size: 0.875rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.global-message.hidden {
+  display: none;
+}
+
+.global-message.success {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.global-message.error {
+  background-color: var(--error-bg);
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+.login-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.demo-info {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   7. DISEÑO RESPONSIVO (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .login-card {
+    padding: 1.8rem 1.25rem;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}

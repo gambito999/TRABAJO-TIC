@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - Plataforma Segura</title>
+  <!-- Vinculación del archivo de estilos -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="login-container">
+    <section class="login-card" aria-labelledby="login-title">
+      
+      <!-- Encabezado de la interfaz -->
+      <header class="login-header">
+        <div class="logo-icon" aria-hidden="true">
+          <!-- SVG: Icono de candado / seguridad -->
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <h1 id="login-title">Acceso al Sistema</h1>
+        <p class="subtitle">Ingresa tus credenciales para continuar</p>
+      </header>
+
+      <!-- Mensajes de estado global (éxito o credenciales erróneas) -->
+      <div id="global-message" class="global-message hidden" role="alert" aria-live="assertive"></div>
+
+      <!-- Formulario de Iniciar Sesión -->
+      <form id="login-form" class="login-form" novalidate>
+
+        <!-- Campo: Correo Electrónico -->
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <div class="input-wrapper">
+            <!-- SVG: Icono de correo -->
+            <svg class="input-icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="ejemplo@correo.com" 
+              autocomplete="email"
+              aria-describedby="email-error"
+            >
+          </div>
+          <span id="email-error" class="error-message" aria-live="polite"></span>
+        </div>
+
+        <!-- Campo: Contraseña -->
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <div class="input-wrapper">
+            <!-- SVG: Icono de llave/candado -->
+            <svg class="input-icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="••••••••" 
+              autocomplete="current-password"
+              aria-describedby="password-error"
+            >
+            <!-- Botón alternar visibilidad de contraseña -->
+            <button 
+              type="button" 
+              id="toggle-password" 
+              class="btn-toggle-password" 
+              aria-label="Mostrar contraseña"
+            >
+              <svg id="eye-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+          <span id="password-error" class="error-message" aria-live="polite"></span>
+        </div>
+
+        <!-- Opciones adicionales: Recordar correo y Recobrar clave -->
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <span class="custom-checkbox"></span>
+            <span class="checkbox-label">Recordar mi correo</span>
+          </label>
+          <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <!-- Botón principal de envío -->
+        <button type="submit" id="btn-submit" class="btn-primary">
+          <span>Iniciar sesión</span>
+        </button>
+
+      </form>
+
+      <!-- Pie de tarjeta con nota informativa didáctica -->
+      <footer class="login-footer">
+        <p class="demo-info">💡 <strong>Credenciales Demo:</strong> demo@ejemplo.com / Demo1234!</p>
+      </footer>
+
+    </section>
+  </main>
+
+  <!-- Vinculación del script de JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
